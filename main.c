@@ -28,7 +28,7 @@
  * http://developer.apple.com/documentation/Security/Conceptual/authorization_concepts/03authtasks/chapter_3_section_4.html
  *
  */
-int main (int argc, const char * argv[])
+int main(int argc, const char** argv)
 {
     // Check that we have enough arguments
     if (argc < 3)
@@ -48,13 +48,13 @@ int main (int argc, const char * argv[])
     }
     
     // Set up the authorization rights
-    AuthorizationItem authItems = {kAuthorizationRightExecute, 0, NULL, 0};
-    AuthorizationRights authRights = {1, &authItems};
+    AuthorizationItem authItems = { kAuthorizationRightExecute, 0, NULL, 0 };
+    AuthorizationRights authRights = { 1, &authItems };
     flags = kAuthorizationFlagDefaults |
             kAuthorizationFlagInteractionAllowed |
             kAuthorizationFlagPreAuthorize |
             kAuthorizationFlagExtendRights;
-    status = AuthorizationCopyRights(authRef, &authRights, NULL, flags, NULL );    
+    status = AuthorizationCopyRights(authRef, &authRights, NULL, flags, NULL);    
     if (status != errAuthorizationSuccess) 
     {
         return status;
@@ -80,6 +80,6 @@ int main (int argc, const char * argv[])
     }
     
     // Cleanup
-    AuthorizationFree (authRef, kAuthorizationFlagDefaults);
+    AuthorizationFree(authRef, kAuthorizationFlagDefaults);
     return 0;
 }
